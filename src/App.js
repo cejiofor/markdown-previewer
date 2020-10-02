@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useState, useEffect, useCallback} from 'react';
 import Editor from './components/Editor';
 import Previewer from './components/Previewer'
 import logo from './logo.svg';
@@ -6,25 +6,21 @@ import './App.css';
 import ReactFCCTest from 'react-fcctest';
 
 function App() {
+  const sampleText = `
+  # H1 header
+  ## H2 header
+  [a link](#)
+  `;
+  const [inputText, setInputText] = useState(sampleText);
+  
   return (
     <div className="App">
     <ReactFCCTest />
       <header className="App-header">
         
-        <Editor/>
-        <Previewer />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Editor text={inputText} onChange={e => setInputText(e.target.value)}/>
+        <Previewer text={inputText}/>
+        
       </header>
     </div>
   );
