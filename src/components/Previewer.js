@@ -11,9 +11,6 @@ function Previewer({text, onChange}) {
         <div>
            <Card id="preview" onChange={onChange}>
                <Typography dangerouslySetInnerHTML={{ __html: marked(markedText) }}>
-               
-                {/* {markedText} */}
-
                </Typography>
                 
             </Card> 
